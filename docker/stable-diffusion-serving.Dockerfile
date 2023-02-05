@@ -6,7 +6,7 @@ ARG PATH="/root/miniconda3/bin:${PATH}"
 RUN 
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && \
-    apt-get install -y wget fonts-dejavu-core rsync git libglib2.0-0 libglib2.0-0-dev && \
+    apt-get install -y wget fonts-dejavu-core rsync git libglib2.0-0 && \
     apt-get clean
 
 RUN wget \
