@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM nvidia/cuda:12.0.1-runtime-ubuntu22.04
 
-ENV PAT±±±±±±±±±±±±±±±±±±±±±±H="/root/miniconda3/bin:${PATH}"
+ENV PATH="/root/miniconda3/bin:${PATH}"
 ARG PATH="/root/miniconda3/bin:${PATH}"
 RUN 
 
