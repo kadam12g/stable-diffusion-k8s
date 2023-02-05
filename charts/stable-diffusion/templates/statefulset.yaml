@@ -5,7 +5,6 @@ metadata:
   labels:
     {{- include "stable-diffusion.labels" . | nindent 4 }}
 spec:
-  runtimeClassName: nvidia
   serviceName: {{ include "stable-diffusion.fullname" . }}
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -32,6 +31,7 @@ spec:
       labels:
         {{- include "stable-diffusion.selectorLabels" . | nindent 8 }}
     spec:
+      runtimeClassName: nvidia
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
