@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "stable-diffusion.labels" . | nindent 4 }}
 spec:
+  runtimeClassName: nvidia
   serviceName: {{ include "stable-diffusion.fullname" . }}
   replicas: {{ .Values.replicaCount }}
   selector:
