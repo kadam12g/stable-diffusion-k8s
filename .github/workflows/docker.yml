@@ -3,7 +3,7 @@ name: Docker CI
 on:
   push:
     tags:
-      - 'v*'
+      - '0*'
 
 jobs:
   docker:
@@ -15,7 +15,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: amithkk/stable-diffusion
+          images: matthewgraves/stable-diffusion
           tag-semver: |
             {{version}}
             {{major}}.{{minor}}
