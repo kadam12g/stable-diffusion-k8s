@@ -31,7 +31,7 @@ persistence:
   ##   GKE, AWS & OpenStack)
   ##
   accessMode: ReadWriteOnce
-  size: 8Gi
+  size: 16Gi
 
 
 serviceAccount:
