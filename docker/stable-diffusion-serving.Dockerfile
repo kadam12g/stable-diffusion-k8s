@@ -15,10 +15,10 @@ RUN wget \
     && bash Miniconda3-latest-Linux-x86_64.sh -b \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
 
-RUN conda install python=3.8.5 && conda clean -a -y
+#RUN conda install python=3.8.5 && conda clean -a -y
 #RUN conda install torchvision==0.12.0 pytorch-cuda==11.6 -c pytorch && conda clean -a -y
-RUN conda install -y python=3.8.5
-RUN conda install -y torchvision==0.12.0 -c pytorch
+RUN conda install -y python=3.9
+RUN conda install -y pytorch torchvision -c pytorch
 RUN conda install -y pytorch-cuda==11.6 -c pytorch
 RUN conda clean -a -y
 RUN conda list
