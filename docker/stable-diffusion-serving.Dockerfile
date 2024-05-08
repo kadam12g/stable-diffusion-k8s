@@ -16,7 +16,11 @@ RUN wget \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
 
 RUN conda install python=3.8.5 && conda clean -a -y
-RUN conda install torchvision==0.12.0 pytorch-cuda==11.6 -c pytorch && conda clean -a -y
+#RUN conda install torchvision==0.12.0 pytorch-cuda==11.6 -c pytorch && conda clean -a -y
+RUN conda install -y python=3.8.5
+RUN conda install -y torchvision==0.12.0 -c pytorch
+RUN conda install -y pytorch-cuda==11.6 -c pytorch
+RUN conda clean -a -y
 RUN conda list
 RUN git clone https://github.com/hlky/stable-diffusion.git && cd stable-diffusion && git reset --hard ff8c2d0b709f1e4180fb19fa5c27ec28c414cedd
 RUN conda env update --file stable-diffusion/environment.yaml --name base && conda clean -a -y
