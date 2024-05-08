@@ -44,12 +44,27 @@ spec:
           image: busybox:1.36
           command: ["/bin/sh"]
           args:
-            - -c
+            - '-c'
             - >-
-                wget -nc {{ .Values.models.sd14 }} -O /models/model.ckpt;
-                wget -nc {{ .Values.models.gfpGan13 }} -P /models;
-                wget -nc {{ .Values.models.realEsrGanx4p10 }} -P /models;
-                wget -nc {{ .Values.models.realEsrGanx4Animep02 }} -P /models
+              set -e;
+              {
+                if [ ! -f /models/model.ckpt ]; then
+                  wget -nc https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4.ckpt -O /models/model.ckpt;
+                fi;
+
+                if [ ! -f /models/GFPGANv1.3.pth ]; then
+                  wget -nc https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth -P /models;
+                fi;
+
+                if [ ! -f /models/RealESRGAN_x4plus.pth ]; then
+                  wget -nc https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth -P /models;
+                fi;
+
+                if [ ! -f /models/RealESRGAN_x4plus_anime_6B.pth ]; then
+                  wget -nc https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.2.4/RealESRGAN_x4plus_anime_6B.pth -P /models;
+                fi;
+              } 2> /models/error.log
+
           volumeMounts:
             - mountPath: /models
               name: {{ include "stable-diffusion.fullname" . }}-model-store
