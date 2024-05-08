@@ -22,4 +22,4 @@
 {{- end }}
 
 Helm Install Complete! It may take a while for the models & container to download (~8GiB)
-http://github.com/matthew-graves/stable-diffusion-k8s
+http://github.com/kadam12g/stable-diffusion-k8s
